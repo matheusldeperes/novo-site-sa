@@ -1,0 +1,186 @@
+{
+  "brand": {
+    "name": "Satte Alam Motors"
+  },
+  "contacts": {
+    "phoneRaw": "+555330261234",
+    "phoneLabel": "(53) 3026-1234",
+    "whatsappLabel": "(53) 3026-1234",
+    "whatsappUrl": "https://wa.me/555330261234",
+    "email": "vendas@sattealam.com",
+    "address": "Avenida Bento Gonçalves, 5248 - Fragata - Pelotas/RS"
+  },
+  "home": {
+    "heroTitle": "Escolha sua necessidade em poucos segundos",
+    "heroSubtitle": "Navegação direta para Seminovos, Oficina Mecânica e Estética Automotiva, com foco em atendimento rápido e informações reais."
+  },
+  "activities": [
+    {
+      "tag": "Oficina",
+      "title": "Serviços de Oficina Mecânica",
+      "description": "Revisões, diagnósticos e manutenção com acompanhamento por WhatsApp.",
+      "visualText": "Revisão, diagnóstico e manutenção com equipe especializada.",
+      "image": "./assets/cards/oficina.jpg",
+      "highlights": [
+        "Orçamento transparente",
+        "Agendamento rápido",
+        "Condições facilitadas"
+      ],
+      "link": "./oficina.html"
+    },
+    {
+      "tag": "Seminovos",
+      "title": "Venda de Seminovos",
+      "description": "Acesso imediato ao estoque de veículos no domínio atual da operação.",
+      "visualText": "Veículos selecionados, revisados e prontos para entrega.",
+      "image": "./assets/cards/seminovos.jpg",
+      "highlights": [
+        "Estoque atualizado",
+        "Avaliação do seu veículo",
+        "Simulação de financiamento"
+      ],
+      "link": "https://www.sattealam.com.br"
+    },
+    {
+      "tag": "Estética",
+      "title": "Serviços de Estética Automotiva",
+      "description": "Lavagem técnica, polimento e proteção para valorização do veículo.",
+      "visualText": "Pintura automotiva, polimento, rodas e acessórios com acabamento premium.",
+      "image": "./assets/cards/estetica.jpg",
+      "highlights": [
+        "Pacotes por categoria",
+        "Atendimento com horário",
+        "Pagamento flexível"
+      ],
+      "link": "./estetica.html"
+    }
+  ],
+  "quickJourney": [
+    {
+      "title": "1) Escolha o serviço",
+      "text": "Entre na área desejada e veja somente o que importa para sua decisão."
+    },
+    {
+      "title": "2) Confira preço e prazo",
+      "text": "Cardápio objetivo com serviços, valores e detalhes essenciais."
+    },
+    {
+      "title": "3) Agende em um clique",
+      "text": "Use os canais de atendimento para confirmar horário e pagamento."
+    }
+  ],
+  "pages": {
+    "oficina": {
+      "tag": "Oficina Mecânica",
+      "title": "Serviços mecânicos com clareza e agilidade",
+      "subtitle": "Da revisão preventiva ao diagnóstico eletrônico, com orçamento direto e confirmação rápida.",
+      "services": [
+        {
+          "name": "Revisão preventiva",
+          "detail": "Check-up completo com 35 itens",
+          "price": "a partir de R$ 289"
+        },
+        {
+          "name": "Troca de óleo e filtros",
+          "detail": "Óleo + filtro de óleo + inspeção geral",
+          "price": "a partir de R$ 219"
+        },
+        {
+          "name": "Diagnóstico eletrônico",
+          "detail": "Leitura de scanner e relatório técnico",
+          "price": "R$ 149"
+        }
+      ],
+      "specializedServices": [
+        {
+          "name": "Manutenção Powershift (Ford)",
+          "image": "./assets/specialized/powershift.jpg"
+        },
+        {
+          "name": "Vazamento Tampa Frontal Focus",
+          "image": "./assets/specialized/tampa-frontal.jpg"
+        },
+        {
+          "name": "Correia dentada banhada a óleo",
+          "image": "./assets/specialized/correia.jpg"
+        },
+        {
+          "name": "Troca de fluido de transmissão (Máquina específica)",
+          "image": "./assets/specialized/transmissao.jpg"
+        },
+        {
+          "name": "Injeção eletrônica flex",
+          "image": "./assets/specialized/injecao-flex.jpg"
+        },
+        {
+          "name": "Injeção Diesel",
+          "image": "./assets/specialized/injecao-diesel.jpg"
+        },
+        {
+          "name": "Manutenção básica suspensão/direção/freios",
+          "image": "./assets/specialized/suspensao.jpg"
+        },
+        {
+          "name": "Geometria 3D",
+          "image": "./assets/specialized/geometria.jpg"
+        },
+        {
+          "name": "Ar Condicionado",
+          "image": "./assets/specialized/ar-condicionado.jpg"
+        }
+      ],
+      "channels": [
+        {
+          "title": "WhatsApp da Oficina",
+          "text": "Atendimento para orçamento e agendamento.",
+          "cta": "Chamar no WhatsApp",
+          "link": "https://wa.me/555330261234"
+        },
+        {
+          "title": "Ligação direta",
+          "text": "Horário comercial para confirmação de serviço.",
+          "cta": "Ligar agora",
+          "link": "tel:+555330261234"
+        }
+      ],
+      "payment": "Aceitamos PIX, cartões de débito e crédito, parcelamento em até 6x (sujeito à operadora)."
+    },
+    "estetica": {
+      "tag": "Estética Automotiva",
+      "title": "Valorização visual e proteção do seu veículo",
+      "subtitle": "Pacotes rápidos e completos para limpeza técnica, brilho e preservação da pintura.",
+      "services": [
+        {
+          "name": "Lavagem detalhada",
+          "detail": "Limpeza externa e interna com acabamento",
+          "price": "a partir de R$ 149"
+        },
+        {
+          "name": "Polimento técnico",
+          "detail": "Correção leve de micro-riscos",
+          "price": "a partir de R$ 499"
+        },
+        {
+          "name": "Higienização interna",
+          "detail": "Bancos, carpetes e painéis",
+          "price": "a partir de R$ 249"
+        }
+      ],
+      "channels": [
+        {
+          "title": "WhatsApp da Estética",
+          "text": "Envie fotos do veículo e receba sugestão de pacote.",
+          "cta": "Solicitar avaliação",
+          "link": "https://wa.me/555330261234"
+        },
+        {
+          "title": "Instagram",
+          "text": "Veja resultados e antes/depois.",
+          "cta": "Abrir Instagram",
+          "link": "https://www.instagram.com/sattealam.motors"
+        }
+      ],
+      "payment": "Aceitamos PIX, débito, crédito e parcelamento em até 10x para pacotes premium."
+    }
+  }
+}

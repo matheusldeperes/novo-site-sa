@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editor de Conteúdo | Satte Alam</title>
+    <meta name="description" content="Editor rápido para atualizar textos, contatos e cardápio de serviços." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+  <body data-page="editor">
+    <header class="topbar shell">
+      <div class="brand-wrap">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <strong>Editor de Conteúdo</strong>
+      </div>
+      <nav class="top-actions">
+        <a class="button ghost" href="./index.html">Voltar ao site</a>
+      </nav>
+    </header>
+
+    <main class="shell page-content">
+      <section class="panel">
+        <h1>Atualização dinâmica de conteúdo</h1>
+        <p>
+          Edite o JSON, valide e depois clique em <strong>Baixar arquivo atualizado</strong>. Substitua o arquivo
+          <strong>data/site-content.json</strong> no repositório.
+        </p>
+      </section>
+
+      <section class="panel">
+        <div class="editor-actions">
+          <button id="formatBtn" class="button">Formatar JSON</button>
+          <button id="validateBtn" class="button ghost">Validar</button>
+          <button id="downloadBtn" class="button">Baixar arquivo atualizado</button>
+        </div>
+        <p id="editorStatus" class="status">Carregando conteúdo...</p>
+        <textarea id="jsonEditor" class="json-editor" spellcheck="false"></textarea>
+      </section>
+    </main>
+
+    <script type="module" src="./scripts/editor.js"></script>
+  </body>
+</html>
