@@ -33,7 +33,8 @@ function renderCards(data) {
   stage.innerHTML = data.activities
     .map(
       (activity) => `
-      <a class="card" href="${activity.link}" style="background-image: url('${activity.image}')">
+      <a class="card" href="${activity.link}">
+        <div class="card-bg" style="background-image: url('${activity.image}')"></div>
         <div class="card-content">
           <span class="card-tag">${activity.tag}</span>
           <h3 class="card-title">${activity.title}</h3>
