@@ -200,7 +200,6 @@ a {
   text-decoration: none;
   transition: transform 0.3s ease, box-shadow 0.3s ease, z-index 0s 0s;
   box-shadow: 0 12px 28px rgba(2, 3, 5, 0.22);
-  background-image: var(--card-image);
   background-size: cover;
   background-position: center;
   cursor: pointer;
