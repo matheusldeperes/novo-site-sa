@@ -12,9 +12,17 @@ function applyGlobalInfo(data) {
     brandName.textContent = data.brand.name;
   }
 
+  const phone = document.getElementById('mainPhone');
+  if (phone) {
+    phone.href = `tel:${data.contacts.phoneRaw}`;
+    phone.textContent = data.contacts.phoneLabel;
+  }
+
   const whatsapp = document.getElementById('mainWhatsapp');
-  whatsapp.href = data.contacts.whatsappUrl;
-  whatsapp.textContent = `WhatsApp ${data.contacts.whatsappLabel}`;
+  if (whatsapp) {
+    whatsapp.href = data.contacts.whatsappUrl;
+    whatsapp.textContent = `WhatsApp ${data.contacts.whatsappLabel}`;
+  }
 
   const footer = document.getElementById('footerInfo');
   footer.innerHTML = `
@@ -30,8 +38,7 @@ function renderCards(data) {
   stage.innerHTML = data.activities
     .map(
       (activity) => `
-      <a class="card" href="${activity.link}">
-        <div class="card-bg" style="background-image: url('${activity.image}')"></div>
+      <a class="card" href="${activity.link}" style="background-image: url('${activity.image}')">
         <div class="card-content">
           <span class="card-tag">${activity.tag}</span>
           <h3 class="card-title">${activity.title}</h3>
