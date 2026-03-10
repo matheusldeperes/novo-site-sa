@@ -12,12 +12,9 @@ function applyGlobalInfo(data) {
     brandName.textContent = data.brand.name;
   }
 
-  const phone = document.getElementById('mainPhone');
-  phone.href = `tel:${data.contacts.phoneRaw}`;
-  phone.textContent = data.contacts.phoneLabel;
-
   const whatsapp = document.getElementById('mainWhatsapp');
   whatsapp.href = data.contacts.whatsappUrl;
+  whatsapp.textContent = `WhatsApp ${data.contacts.whatsappLabel}`;
 
   const footer = document.getElementById('footerInfo');
   footer.innerHTML = `
