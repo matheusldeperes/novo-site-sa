@@ -3,17 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Satte Alam | O ciclo completo do carro!</title>
+    <title>Blog | Satte Alam</title>
     <meta
       name="description"
-      content="Escolha rapidamente entre Seminovos, Oficina Mecânica e Estética Automotiva."
+      content="Conteúdo automotivo com foco em informação, cuidado e orientação prática para clientes da Satte Alam."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./styles/style.css" />
   </head>
-  <body data-page="home">
+  <body data-page="blog">
     <div class="info-bar">
       <div class="shell info-bar-inner"><strong>Horário de atendimento:</strong> Seg a Sex - 8h às 12h - 13:30h às 18h</div>
     </div>
@@ -28,21 +28,40 @@
           <a href="https://www.sattealam.com.br" target="_blank" rel="noopener noreferrer">Seminovos</a>
           <a href="./oficina.html">Oficina</a>
           <a href="./estetica.html">Estética</a>
-          <a href="./blog.html">Blog</a>
+          <a href="./blog.html" aria-current="page">Blog</a>
+          <a href="./index.html">Início</a>
         </nav>
 
         <nav class="top-actions">
-          <a id="mainWhatsapp" class="button whatsapp" href="#" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          <a class="button ghost" href="./blog-admin.html">Área do colaborador</a>
         </nav>
       </div>
     </header>
 
-    <main class="shell home-main">
-      <section class="cards-stage home-cards" id="cardsStage" aria-label="Áreas principais"></section>
+    <main class="shell page-content">
+      <section class="blog-hero">
+        <p class="eyebrow">Blog</p>
+        <h1 id="blogTitle">Carregando...</h1>
+        <p id="blogSubtitle"></p>
+        <p id="blogDescription" class="blog-description"></p>
+      </section>
+
+      <section>
+        <h2>Publicações</h2>
+        <div id="blogList" class="blog-list"></div>
+      </section>
+
+      <section id="articleSection" class="blog-article" hidden>
+        <p class="eyebrow">Matéria selecionada</p>
+        <h2 id="articleTitle"></h2>
+        <div id="articleImages" class="blog-images"></div>
+        <article id="articleBody" class="blog-body"></article>
+        <p id="articleMeta" class="blog-meta"></p>
+      </section>
     </main>
 
-    <footer class="footer shell" id="footerInfo"></footer>
+    <footer class="footer shell" id="blogFooter"></footer>
 
-    <script type="module" src="./scripts/app.js"></script>
+    <script type="module" src="./scripts/blog.js"></script>
   </body>
 </html>

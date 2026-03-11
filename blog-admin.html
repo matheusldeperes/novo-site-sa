@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Área do Colaborador | Blog Satte Alam</title>
+    <meta name="description" content="Área simples para login e cadastro de novas matérias do blog da Satte Alam." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+  <body data-page="blog-admin">
+    <header class="topbar shell">
+      <div class="brand-wrap">
+        <span class="brand-dot" aria-hidden="true"></span>
+        <strong>Área do Colaborador — Blog</strong>
+      </div>
+      <nav class="top-actions">
+        <a class="button ghost" href="./blog.html">Ver blog</a>
+        <a class="button ghost" href="./index.html">Voltar ao site</a>
+      </nav>
+    </header>
+
+    <main class="shell page-content">
+      <section class="panel" id="loginPanel">
+        <h1>Entrar para publicar matéria</h1>
+        <p>Faça login para cadastrar uma nova publicação e baixar o arquivo atualizado de conteúdo.</p>
+
+        <form id="loginForm" class="blog-admin-form">
+          <label>
+            Usuário
+            <input id="username" type="text" required autocomplete="username" />
+          </label>
+          <label>
+            Senha
+            <input id="password" type="password" required autocomplete="current-password" />
+          </label>
+          <button class="button" type="submit">Entrar</button>
+        </form>
+      </section>
+
+      <section class="panel" id="editorPanel" hidden>
+        <div class="blog-admin-header">
+          <h2>Nova matéria</h2>
+          <div class="editor-actions">
+            <button id="logoutBtn" class="button ghost">Sair</button>
+          </div>
+        </div>
+
+        <p id="adminStatus" class="status">Pronto para cadastrar conteúdo.</p>
+
+        <form id="postForm" class="blog-admin-form">
+          <label>
+            Título da matéria
+            <input id="postTitle" type="text" required />
+          </label>
+
+          <label>
+            Autor(a)
+            <input id="postAuthor" type="text" required />
+          </label>
+
+          <label>
+            Data de publicação
+            <input id="postDate" type="date" required />
+          </label>
+
+          <label>
+            Imagens ilustrativas
+            <input id="postImages" type="file" multiple accept="image/*" />
+            <small>Selecione uma ou mais imagens do seu computador. Serão armazenadas automaticamente no servidor.</small>
+            <div id="imagePreview" class="image-preview"></div>
+          </label>
+
+          <label>
+            Corpo da matéria
+            <textarea id="postContent" rows="10" required placeholder="Escreva o conteúdo aqui..."></textarea>
+          </label>
+
+          <button class="button" type="submit">Adicionar matéria</button>
+        </form>
+      </section>
+
+      <section class="panel" id="postsPanel" hidden>
+        <h2>Matérias cadastradas</h2>
+        <p>As alterações são salvas automaticamente ao publicar ou remover uma matéria.</p>
+        <div id="adminPostsList" class="blog-admin-list"></div>
+      </section>
+    </main>
+
+    <script type="module" src="./scripts/blog-admin.js"></script>
+  </body>
+</html>

@@ -1,2 +1,4 @@
 .DS_Store
-Thumbs.db
+Thumbs.dbnode_modules/
+package-lock.json
+.env

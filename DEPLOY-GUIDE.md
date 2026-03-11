@@ -8,6 +8,16 @@
 - **Provedor**: Vetorial.Net
 - **Name Server**: NS1.VIRTUAL.VETORIALNET.COM.BR
 
+## Importante sobre o Blog Automático
+
+O fluxo de publicação automática (login + salvar matéria sem baixar JSON) usa **PHP puro** via `api.php`.
+
+**Requisitos mínimos:**
+- Apache + PHP (padrão em qualquer cPanel)
+- Permissões de escrita em `/data/` (para salvar site-content.json)
+
+O sistema **não depende de Node.js** e funciona em qualquer hospedagem tradicional.
+
 ## Contatos para Solicitar Acesso
 
 1. **Vetorial.Net**: https://www.vetorialnet.com.br/suporte
@@ -62,6 +72,10 @@ Acessar e testar:
 - [ ] https://sattealam.com (página principal)
 - [ ] https://sattealam.com/oficina (página oficina)
 - [ ] https://sattealam.com/estetica (página estética)
+- [ ] https://sattealam.com/blog (blog público)
+- [ ] https://sattealam.com/blog-admin (painel colaborador)
+- [ ] Login no blog-admin funciona
+- [ ] Nova matéria salva e aparece no blog sem download manual
 - [ ] Todos os cards clicam corretamente
 - [ ] Imagens carregam
 - [ ] Links do WhatsApp funcionam
@@ -83,18 +97,24 @@ Acessar e testar:
 ├── index.html
 ├── oficina.html
 ├── estetica.html
+├── blog.html
+├── blog-admin.html
 ├── editor.html
+├── api.php
 ├── .htaccess
 ├── assets/
 │   ├── cards/
 │   ├── specialized/
 │   └── logo_exp.png
 ├── data/
+│   ├── blog-users.json
 │   └── site-content.json
 ├── scripts/
 │   ├── app.js
 │   ├── page.js
-│   └── editor.js
+│   ├── editor.js
+│   ├── blog.js
+│   └── blog-admin.js
 ├── styles/
 │   └── style.css
 └── README.md

@@ -410,6 +410,144 @@ a {
   flex-wrap: wrap;
 }
 
+.brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--brand-black);
+}
+
+.blog-hero {
+  text-align: center;
+}
+
+.blog-description {
+  color: var(--brand-gray-600);
+  margin-bottom: 0;
+}
+
+.blog-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.blog-list-item {
+  background: var(--brand-gray-100);
+  border: 1px solid #e5e5e5;
+  padding: 16px;
+  display: grid;
+  gap: 10px;
+  align-content: start;
+  text-align: left;
+}
+
+.blog-list-item.active {
+  border-color: var(--brand-black);
+}
+
+.blog-list-item h3 {
+  margin: 0;
+}
+
+.blog-list-item p {
+  margin: 0;
+  color: var(--brand-gray-600);
+}
+
+.blog-article {
+  text-align: left;
+}
+
+.blog-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.blog-images img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border: 1px solid #e5e5e5;
+}
+
+.blog-body p {
+  margin: 0 0 14px;
+  line-height: 1.7;
+}
+
+.blog-meta {
+  border-top: 1px solid #e8e8e8;
+  padding-top: 12px;
+  font-weight: 600;
+  color: var(--brand-gray-600);
+}
+
+.blog-admin-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.blog-admin-form {
+  display: grid;
+  gap: 12px;
+  text-align: left;
+}
+
+.blog-admin-form label {
+  display: grid;
+  gap: 6px;
+  font-weight: 600;
+}
+
+.blog-admin-form input,
+.blog-admin-form textarea {
+  width: 100%;
+  border: 1px solid #dbdbdb;
+  background: #fafafa;
+  padding: 10px 12px;
+  font: inherit;
+}
+
+.blog-admin-list {
+  display: grid;
+  gap: 10px;
+}
+
+.blog-admin-item {
+  border: 1px solid #e5e5e5;
+  background: var(--brand-gray-100);
+  padding: 12px;
+  text-align: left;
+}
+
+.blog-admin-item h3,
+.blog-admin-item p {
+  margin: 0 0 8px;
+}
+
+.image-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 8px;
+  background: #f9f9f9;
+  border-radius: 4px;
+  min-height: 20px;
+}
+
 /* Specialized Services Cards */
 .specialized-grid {
   display: grid;
