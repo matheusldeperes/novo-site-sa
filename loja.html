@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Peças e Acessórios | Satte Alam</title>
+    <meta
+      name="description"
+      content="Confira nossas peças e acessórios automotivos disponíveis na loja Mercado Livre da Satte Alam."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+  <body data-page="loja">
+    <div class="info-bar">
+      <div class="shell info-bar-inner"><strong>Horário de atendimento:</strong> Seg a Sex - 8h às 12h - 13:30h às 18h</div>
+    </div>
+
+    <header class="site-header">
+      <div class="shell topbar">
+        <a class="logo" href="./index.html" aria-label="Satte Alam Home">
+          <img src="./assets/logo_exp.png" alt="Satte Alam" class="logo-image" />
+        </a>
+
+        <nav class="main-nav" aria-label="Menu principal">
+          <a href="https://www.sattealam.com.br" target="_blank" rel="noopener noreferrer">Seminovos</a>
+          <a href="./oficina.html">Oficina</a>
+          <a href="./loja.html" class="active">Peças</a>
+          <a href="./estetica.html">Estética</a>
+          <a href="./blog.html">Blog</a>
+        </nav>
+
+        <nav class="top-actions">
+          <a id="mainWhatsapp" class="button whatsapp" href="#" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="shell page-ml-store pb-120">
+      <div class="section-title text-center mt-60">
+        <h2>Nossas Peças e Acessórios</h2>
+        <p>Compre com a segurança do Mercado Livre</p>
+      </div>
+
+      <div id="mlStoreFeed" class="ml-store-grid mt-40">
+        <div class="loading-state">
+          <p>Carregando produtos...</p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer shell" id="footerInfo"></footer>
+
+    <script type="module" src="./scripts/app.js"></script>
+    <script>
+      async function loadMLProducts() {
+        const feedContainer = document.getElementById('mlStoreFeed');
+        if (!feedContainer) return;
+        
+        try {
+          const response = await fetch('/api.php?action=mlProducts');
+          if (!response.ok) {
+            console.error('Fetch returned', response.status, await response.text());
+            throw new Error('Falha ao carregar loja');
+          }
+          const data = await response.json();
+          
+          if (!data.results || data.results.length === 0) {
+             feedContainer.innerHTML = '<div class="empty-state"><p>Nenhum produto disponível no momento.</p></div>';
+             return;
+          }
+
+          feedContainer.innerHTML = '';
+          data.results.forEach(product => {
+            const card = document.createElement('div');
+            card.className = 'ml-product-card';
+            
+            const imageUrl = product.thumbnail.replace('I.jpg', 'O.jpg').replace('I.webp', 'O.webp');
+            const priceVal = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: product.currency_id }).format(product.price);
+            
+            card.innerHTML = `
+              <div class="ml-product-image">
+                 <img src="${imageUrl}" alt="${product.title}" loading="lazy" />
+              </div>
+              <div class="ml-product-info">
+                 <h3 class="ml-product-title">${product.title}</h3>
+                 <div class="ml-product-price">${priceVal}</div>
+                 <a href="${product.permalink}" target="_blank" rel="noopener noreferrer" class="button button-primary ml-product-buy">Ver no Mercado Livre</a>
+              </div>
+            `;
+            feedContainer.appendChild(card);
+          });
+
+        } catch (error) {
+           feedContainer.innerHTML = '<div class="error-state"><p>Não foi possível carregar os produtos. Tente novamente mais tarde.</p></div>';
+           console.error(error);
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', loadMLProducts);
+    </script>
+  </body>
+</html>

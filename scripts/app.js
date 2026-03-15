@@ -25,29 +25,33 @@ function applyGlobalInfo(data) {
   }
 
   const footer = document.getElementById('footerInfo');
-  footer.innerHTML = `
-    <strong>${data.brand.name}</strong><br />
-    ${data.contacts.address}<br />
-    Tel: ${data.contacts.phoneLabel} · WhatsApp: ${data.contacts.whatsappLabel}<br />
-    E-mail: <a href="mailto:${data.contacts.email}">${data.contacts.email}</a>
-  `;
+  if (footer) {
+    footer.innerHTML = `
+      <strong>${data.brand.name}</strong><br />
+      ${data.contacts.address}<br />
+      Tel: ${data.contacts.phoneLabel} · WhatsApp: ${data.contacts.whatsappLabel}<br />
+      E-mail: <a href="mailto:${data.contacts.email}">${data.contacts.email}</a>
+    `;
+  }
 }
 
 function renderCards(data) {
   const stage = document.getElementById('cardsStage');
-  stage.innerHTML = data.activities
-    .map(
-      (activity) => `
-      <a class="card" href="${activity.link}" style="background-image: url('${activity.image}')">
-        <div class="card-content">
-          <span class="card-tag">${activity.tag}</span>
-          <h3 class="card-title">${activity.title}</h3>
-          <p class="card-visual-text">${activity.visualText || activity.description}</p>
-        </div>
-      </a>
-    `,
-    )
-    .join('');
+  if (stage) {
+    stage.innerHTML = data.activities
+      .map(
+        (activity) => `
+        <a class="card" href="${activity.link}" style="background-image: url('${activity.image}')">
+          <div class="card-content">
+            <span class="card-tag">${activity.tag}</span>
+            <h3 class="card-title">${activity.title}</h3>
+            <p class="card-visual-text">${activity.visualText || activity.description}</p>
+          </div>
+        </a>
+      `,
+      )
+      .join('');
+  }
 }
 
 async function init() {

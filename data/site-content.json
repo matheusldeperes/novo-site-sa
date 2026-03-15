@@ -75,54 +75,24 @@
         "description": "Este espaço existe para entregar valor real: informação útil, orientação prática e troca de experiência.",
         "posts": [
             {
-                "id": "teste2",
-                "title": "teste2",
-                "author": "satte",
-                "publishedAt": "2026-03-12",
-                "images": [
-                    "site-content (2).json"
-                ],
-                "content": "sdsalfgnasçflkgnsaflgksanf"
-            },
-            {
-                "id": "materia-teste",
-                "title": "Matéria Teste",
-                "author": "Matheus Peres - Coordenador de Planejamento",
+                "id": "polimento-automotivo-muito-alem-da-estetica",
+                "title": "Polimento Automotivo: Muito Além da Estética",
+                "author": "Equipe Satte Alam",
                 "publishedAt": "2026-03-11",
                 "images": [
-                    "https://drive.google.com/file/d/1MK0mH25M_orNwN1kwnp7VBmrRkT2x0AQ/view?usp=drive_link"
+                    "./assets/blog/27-1773262515.jpg"
                 ],
-                "content": "TESTETESTETESTETESTETESTETESTETESTETESTETESTETESTETESTE\nTESTETESTETESTETESTETESTE\nTESTETESTETESTETESTETESTE\nTESTETESTETESTETESTETESTETESTETESTE"
+                "content": "Muitos proprietários acreditam que o polimento serve apenas para deixar o carro brilhando para uma venda. Na verdade, o polimento técnico é um procedimento de correção e proteção da pintura que preserva o patrimônio a longo prazo.\n\nDiferente de uma simples enceragem, o polimento atua na camada do verniz, removendo imperfeições e devolvendo a integridade visual do veículo.\n\n- O que o polimento realmente resolve?\nO processo é capaz de eliminar problemas comuns que o uso diário impõe à lataria:\n\nRiscos Superficiais: Aqueles que não atingiram a tinta, ficando apenas no verniz.\n\nManchas de Oxidação: Causadas por exposição prolongada ao sol (raios UV) e chuva ácida.\n\n\"Teias de Aranha\": Micro-riscos circulares causados por lavagens incorretas ou panos sujos.\n\nContaminações: Resíduos industriais, seiva de árvores ou dejetos de pássaros que grudam na superfície.\n\nPolimento vs. Cristalização vs. Vitrificação\nÉ importante não confundir os termos para orientar bem o cliente:\n\nPolimento: É a fase de correção. Remove uma microcamada do verniz para nivelar a superfície.\n\nCristalização/Espelhamento: É a aplicação de uma resina protetora após o polimento para garantir brilho duradouro.\n\nVitrificação: É o nível máximo de proteção. Cria uma camada de vidro (sílica) sobre a pintura, com alta repelência e resistência química.\n\nQuando realizar o procedimento?\nO polimento não deve ser feito mensalmente, pois o verniz do carro tem uma espessura limitada. O ideal é realizá-lo:\n\nQuando a pintura apresentar aspecto opaco (\"fosco\").\n\nPara remover imperfeições que a lavagem convencional não retira.\n\nComo preparação para a aplicação de uma proteção cerâmica ou vitrificação.\n\nValorização do Ativo:\nUm carro com a pintura bem cuidada chega a valer até 15% mais na hora da troca. Mais do que vaidade, o polimento é uma manutenção preventiva contra a corrosão e a desvalorização acelerada, então, fique de olho!!"
             },
             {
                 "id": "sincronia-perfeita-a-importancia-da-correia-dentada",
                 "title": "Sincronia Perfeita: A Importância da Correia Dentada",
-                "author": "Equipe Satte Alam",
+                "author": "Matheus Peres - Coordenador de Planejamento - Satte Alam",
                 "publishedAt": "2026-03-11",
                 "images": [
-                    "/assets/blog/pasek-rozrzadu-czym-jest-i-jak-rozpoznac-jego-zuzycie-2.jpg-1773228728.webp"
+                    "./assets/blog/2_IMAGEM-1-1773246915.jpg"
                 ],
-                "content": "A correia dentada é o maestro do motor. Ela coordena a abertura das válvulas com o movimento dos pistões. Se essa sincronia falha, as peças colidem, causando um estrago mecânico caríssimo.\n\nCorreia Seca vs. Banhada a Óleo\nCorreia Seca (Tradicional): Trabalha isolada. É sensível a poeira, minério e vazamentos externos de óleo, que podem ressecar a borracha.\n\nTroca: Geralmente entre 50.000 km e 60.000 km.\n\nCorreia Banhada a Óleo: Tecnologia moderna para reduzir atrito e aumentar a vida útil. O maior risco aqui é o uso de óleo incorreto ou fora do prazo, que faz a correia esfarelar e entupir o sistema de lubrificação.\n\nTroca: Prazos maiores (até 150.000 km), mas exige rigor absoluto com o tipo de lubrificante.\n\nPor que não facilitar?\nA quebra da correia é silenciosa e súbita. O custo da substituição preventiva do kit (correia e esticador) é uma fração do que se gasta retificando um cabeçote \"atropelado\" pela falta de sincronismo.\n\nRegra de ouro: Se comprou um carro usado e não tem o histórico de manutenção, troque a correia imediatamente."
-            },
-            {
-                "id": "checklist-viagem",
-                "title": "Checklist rápido antes de pegar a estrada",
-                "author": "Equipe Satte Alam",
-                "publishedAt": "2026-03-10",
-                "images": [
-                    "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1400&q=80"
-                ],
-                "content": "Antes de viajar, faça uma checagem simples para reduzir riscos e evitar imprevistos.\n\nComece pelos pneus: avalie pressão, desgaste e estado do estepe. Em seguida, confira níveis de óleo do motor, fluido de freio e água do reservatório.\n\nTeste iluminação externa, palhetas e bateria. Se notar ruído diferente ou vibração, procure uma avaliação técnica antes de sair."
-            },
-            {
-                "id": "higienizacao-interna",
-                "title": "Higienização interna: quando fazer e por quê",
-                "author": "Colaborador Técnico",
-                "publishedAt": "2026-02-22",
-                "images": [
-                    "https://images.unsplash.com/photo-1600679473004-4a2f6d4e8d58?auto=format&fit=crop&w=1400&q=80"
-                ],
-                "content": "A higienização interna vai além da aparência. Ela ajuda na saúde de quem usa o carro diariamente e melhora a conservação dos materiais.\n\nEm veículos de uso intenso, o ideal é repetir o processo em períodos regulares, com foco em bancos, carpetes, forros e sistema de ar-condicionado.\n\nCom os cuidados certos, o interior do veículo mantém conforto, reduz odores e valoriza o automóvel na revenda."
+                "content": "A correia dentada é o maestro do motor. Ela coordena a abertura das válvulas com o movimento dos pistões. Se essa sincronia falha, as peças colidem, causando um estrago mecânico caríssimo.\n\nCorreia Seca vs. Banhada a Óleo\nCorreia Seca (Tradicional): Trabalha isolada. É sensível a poeira, minério e vazamentos externos de óleo, que podem ressecar a borracha.\n\nTroca: Geralmente entre 50.000 km e 60.000 km.\n\nCorreia Banhada a Óleo: Tecnologia moderna para reduzir atrito e aumentar a vida útil. O maior risco aqui é o uso de óleo incorreto ou fora do prazo, que faz a correia esfarelar e entupir o sistema de lubrificação.\n\nTroca: Prazos maiores (até 150.000 km), mas exige rigor absoluto com o tipo de lubrificante.\n\nPor que não facilitar?\nA quebra da correia é silenciosa e súbita. O custo da substituição preventiva do kit (correia e esticador) é uma fração do que se gasta retificando um cabeçote \"atropelado\" pela falta de sincronismo.\n\nQuer conferir o vídeo que fizemos sobre esse assunto? Clica no link abaixo!\n\nhttps://www.instagram.com/reel/DVtpmM8icPs/?igsh=MWVtaWNhNnB5cGRocA=="
             }
         ]
     },
@@ -133,19 +103,44 @@
             "subtitle": "Da revisão preventiva ao diagnóstico eletrônico, com orçamento direto e confirmação rápida.",
             "services": [
                 {
-                    "name": "Revisão preventiva",
-                    "detail": "Check-up completo com 35 itens",
-                    "price": "a partir de R$ 289"
+                    "name": "Revisão de até 60 itens",
+                    "detail": "Revisão preventiva de até 60 itens com produção de orçamento (não obrigatório).",
+                    "price": "A partir de R$ 220,00"
                 },
                 {
-                    "name": "Troca de óleo e filtros",
-                    "detail": "Óleo + filtro de óleo + inspeção geral",
-                    "price": "a partir de R$ 219"
+                    "name": "Troca de Óleo + Filtro de Óleo (Passeio)",
+                    "detail": "Carros de passeio até 2.0 aspirado (valor considerando óleo 5w30).",
+                    "price": "a partir de R$ 240,00"
                 },
                 {
-                    "name": "Diagnóstico eletrônico",
-                    "detail": "Leitura de scanner e relatório técnico",
-                    "price": "R$ 149"
+                    "name": "Troca de Óleo + Filtro de Óleo (Pick-Ups)",
+                    "detail": "Considerando modelo Ranger motor 2.2. Para outros motores, solicite cotação via WhatsApp neste botão!",
+                    "price": "a partir de R$ 499,00"
+                },
+                {
+                    "name": "Geometria e Balanceamento (Passeio)",
+                    "detail": "Alinhamento e balanceamento para veículos de passeio.",
+                    "price": "R$ 140,00"
+                },
+                {
+                    "name": "Geometria e Balanceamento (Pick-Up)",
+                    "detail": "Alinhamento e balanceamento para pick-ups.",
+                    "price": "R$ 180,00"
+                },
+                {
+                    "name": "Troca de fluido de transmissão (Diálise com equipamento)",
+                    "detail": "Considerado fluido ATF compatível com MERCON LV e DEXRON III. Para CVT, solicitar cotação via WhatsApp neste botão!",
+                    "price": "a partir de R$ 1299,00"
+                },
+                {
+                    "name": "Troca de Correia Dentada com Bomba D’água Motor Sigma",
+                    "detail": "Atende modelos New Fiesta, Focus, Ecosport e Ka com motores Sigma. Aproveite promoção de 20% de desconto neste serviço!",
+                    "price": "a partir de R$ 2540,00"
+                },
+                {
+                    "name": "Troca Correia Dentada com Bomba D’água Motores Volkswagen EA111",
+                    "detail": "Atende modelos Gol, Voyage, Saveiro, Parati, Kombi, Fox e Golf com motores EA111 1.0 e 1.6. Aproveite promoção de 20% de desconto neste serviço!",
+                    "price": "a partir de R$ 1454,00"
                 }
             ],
             "specializedServices": [

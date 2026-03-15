@@ -8,7 +8,7 @@ function makeServiceList(services, page, contacts) {
       ${services
         .map((service) => {
           if (page === 'oficina' || page === 'estetica') {
-            const message = `Olá, tudo bem? Quero agendar o serviço ${service.name}`;
+            const message = `Olá, tudo bem? Quero agendar o serviço de ${service.name}`;
             const link = `https://wa.me/${phoneDigits}?text=${encodeURIComponent(message)}`;
 
             return `
@@ -84,6 +84,7 @@ async function initPage() {
 
     <section>
       <h2>Cardápio de serviços</h2>
+      <p class="services-helper-text">Clique na opção preferida para agendar!</p>
       ${makeServiceList(content.services, page, data.contacts)}
     </section>
 

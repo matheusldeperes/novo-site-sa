@@ -1,4 +1,5 @@
 const CONTENT_PATH = './data/site-content.json';
+const API_PATH = './api.php';
 
 const loginPanel = document.getElementById('loginPanel');
 const editorPanel = document.getElementById('editorPanel');
@@ -6,14 +7,44 @@ const postsPanel = document.getElementById('postsPanel');
 const loginForm = document.getElementById('loginForm');
 const postForm = document.getElementById('postForm');
 const adminStatus = document.getElementById('adminStatus');
+const loginStatus = document.getElementById('loginStatus');
 const postsList = document.getElementById('adminPostsList');
+const savePostBtn = document.getElementById('savePostBtn');
+const cancelEditBtn = document.getElementById('cancelEditBtn');
+const editingPostIdInput = document.getElementById('editingPostId');
+const existingImagesInfo = document.getElementById('existingImagesInfo');
 
 let siteData = null;
 let currentUser = null;
+let editingPostImages = [];
+
+async function requestApiJson(url, options = {}) {
+  const response = await fetch(url, options);
+  const raw = await response.text();
+
+  let data = {};
+  try {
+    data = raw ? JSON.parse(raw) : {};
+  } catch {
+    throw new Error('Resposta inválida da API (esperado JSON). Verifique caminho do api.php na subpasta /novo.');
+  }
+
+  if (!response.ok) {
+    throw new Error(data.error || `Erro ${response.status} na API.`);
+  }
+
+  return data;
+}
 
 function setStatus(text, isError = false) {
   adminStatus.textContent = text;
   adminStatus.classList.toggle('error', isError);
+}
+
+function setLoginStatus(text, isError = false) {
+  if (!loginStatus) return;
+  loginStatus.textContent = text;
+  loginStatus.classList.toggle('error', isError);
 }
 
 function slugify(text) {
@@ -44,11 +75,47 @@ function renderPosts() {
       <article class="blog-admin-item">
         <h3>${post.title}</h3>
         <p>Por ${post.author} · ${post.publishedAt}</p>
+        <button type="button" class="button" data-edit-id="${post.id}">Editar</button>
         <button type="button" class="button ghost" data-remove-id="${post.id}">Remover</button>
       </article>
     `,
     )
     .join('');
+}
+
+function resetEditorForm() {
+  postForm.reset();
+  editingPostIdInput.value = '';
+  editingPostImages = [];
+  savePostBtn.textContent = 'Adicionar matéria';
+  cancelEditBtn.hidden = true;
+  existingImagesInfo.textContent = '';
+  document.getElementById('imagePreview').innerHTML = '';
+  document.getElementById('postDate').value = new Date().toISOString().slice(0, 10);
+
+  if (currentUser) {
+    document.getElementById('postAuthor').value = currentUser.displayName || currentUser.username;
+  }
+}
+
+function startEditingPost(post) {
+  editingPostIdInput.value = post.id || '';
+  editingPostImages = Array.isArray(post.images) ? [...post.images] : [];
+
+  document.getElementById('postTitle').value = post.title || '';
+  document.getElementById('postAuthor').value = post.author || (currentUser ? (currentUser.displayName || currentUser.username) : '');
+  document.getElementById('postDate').value = post.publishedAt || new Date().toISOString().slice(0, 10);
+  document.getElementById('postContent').value = post.content || '';
+  document.getElementById('postImages').value = '';
+  document.getElementById('imagePreview').innerHTML = '';
+
+  savePostBtn.textContent = 'Salvar alterações';
+  cancelEditBtn.hidden = false;
+  existingImagesInfo.textContent = editingPostImages.length
+    ? `Esta matéria já possui ${editingPostImages.length} imagem(ns). As novas serão adicionadas às existentes.`
+    : 'Esta matéria não possui imagens salvas.';
+
+  setStatus(`Editando matéria: ${post.title}`);
 }
 
 async function loadContent() {
@@ -70,6 +137,8 @@ function showLoggedInState(user) {
   loginPanel.hidden = true;
   editorPanel.hidden = false;
   postsPanel.hidden = false;
+  setLoginStatus('');
+  resetEditorForm();
   setStatus(`Login realizado. Bem-vindo(a), ${user.displayName || user.username}.`);
 }
 
@@ -99,18 +168,12 @@ async function uploadImages(fileList) {
     formData.append('file', file);
 
     try {
-      const response = await fetch('/api.php?action=uploadImage', {
+      const result = await requestApiJson(`${API_PATH}?action=uploadImage`, {
         method: 'POST',
         credentials: 'same-origin',
         body: formData,
       });
 
-      if (!response.ok) {
-        const result = await response.json().catch(() => ({}));
-        return { error: result.error || `Falha ao enviar ${file.name}` };
-      }
-
-      const result = await response.json();
       if (result.path) {
         paths.push(result.path);
       }
@@ -129,22 +192,16 @@ async function handleLogin(event) {
   const password = document.getElementById('password').value;
 
   try {
-    const response = await fetch('/api.php?action=login', {
+    const result = await requestApiJson(`${API_PATH}?action=login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'same-origin',
       body: JSON.stringify({ username, password }),
     });
 
-    if (!response.ok) {
-      setStatus('Usuário ou senha inválidos.', true);
-      return;
-    }
-
-    const result = await response.json();
     showLoggedInState(result.user);
   } catch (error) {
-    setStatus(`Falha no login: ${error.message}`, true);
+    setLoginStatus(`Falha no login: ${error.message}`, true);
   }
 }
 
@@ -157,6 +214,7 @@ async function handlePostSubmit(event) {
   const content = document.getElementById('postContent').value.trim();
   const fileInput = document.getElementById('postImages');
   const files = fileInput.files || [];
+  const editingId = editingPostIdInput.value.trim();
 
   if (!title || !publishedAt || !content) {
     setStatus('Preencha título, data e conteúdo.', true);
@@ -165,25 +223,28 @@ async function handlePostSubmit(event) {
 
   setStatus('Processando imagens...');
 
-  let images = [];
+  let images = editingId ? [...editingPostImages] : [];
   if (files.length > 0) {
     const uploadedImages = await uploadImages(files);
     if (uploadedImages.error) {
       setStatus(uploadedImages.error, true);
       return;
     }
-    images = uploadedImages.paths || [];
+    images = [...images, ...(uploadedImages.paths || [])];
   }
 
-  let id = slugify(title);
-  if (!id) id = `post-${Date.now()}`;
+  let id = editingId;
+  if (!id) {
+    id = slugify(title);
+    if (!id) id = `post-${Date.now()}`;
 
-  if ((siteData.blog.posts || []).some((post) => post.id === id)) {
-    id = `${id}-${Date.now()}`;
+    if ((siteData.blog.posts || []).some((post) => post.id === id)) {
+      id = `${id}-${Date.now()}`;
+    }
   }
 
   try {
-    const response = await fetch('/api.php?action=createPost', {
+    await requestApiJson(`${API_PATH}?action=${editingId ? 'updatePost' : 'createPost'}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'same-origin',
@@ -197,33 +258,29 @@ async function handlePostSubmit(event) {
       }),
     });
 
-    if (!response.ok) {
-      const result = await response.json().catch(() => ({}));
-      setStatus(result.error || 'Não foi possível salvar a matéria.', true);
-      return;
-    }
-
     await loadContent();
-    postForm.reset();
-    document.getElementById('imagePreview').innerHTML = '';
-    document.getElementById('postAuthor').value = author;
-    document.getElementById('postDate').value = new Date().toISOString().slice(0, 10);
-    setStatus('Matéria adicionada e publicada com sucesso.');
+    resetEditorForm();
+    setStatus(editingId ? 'Matéria atualizada com sucesso.' : 'Matéria adicionada e publicada com sucesso.');
   } catch (error) {
     setStatus(`Falha ao salvar matéria: ${error.message}`, true);
   }
 }
 
 async function init() {
+  if (window.location.hostname.includes('github.io')) {
+    setLoginStatus('No GitHub Pages, o login não funciona porque ele não executa PHP. Use seu domínio/cPanel para publicar matérias.', true);
+  }
+
   await loadContent();
   document.getElementById('postDate').value = new Date().toISOString().slice(0, 10);
 
-  const sessionResponse = await fetch('/api.php?action=session', { credentials: 'same-origin' });
-  if (sessionResponse.ok) {
-    const sessionData = await sessionResponse.json();
+  try {
+    const sessionData = await requestApiJson(`${API_PATH}?action=session`, { credentials: 'same-origin' });
     if (sessionData.authenticated) {
       showLoggedInState(sessionData.user);
     }
+  } catch (error) {
+    setLoginStatus(`Falha na API: ${error.message}`, true);
   }
 
   loginForm.addEventListener('submit', handleLogin);
@@ -251,22 +308,36 @@ async function init() {
   });
 
   document.getElementById('logoutBtn').addEventListener('click', async () => {
-    await fetch('/api.php?action=logout', { method: 'POST', credentials: 'same-origin' });
+    await requestApiJson(`${API_PATH}?action=logout`, { method: 'POST', credentials: 'same-origin' });
+    resetEditorForm();
     showLoggedOutState();
   });
 
+  cancelEditBtn.addEventListener('click', () => {
+    resetEditorForm();
+    setStatus('Edição cancelada.');
+  });
+
   postsList.addEventListener('click', async (event) => {
+    const editButton = event.target.closest('button[data-edit-id]');
+    if (editButton) {
+      const postId = editButton.dataset.editId;
+      const post = (siteData.blog.posts || []).find((item) => item.id === postId);
+      if (post) {
+        startEditingPost(post);
+      }
+      return;
+    }
+
     const button = event.target.closest('button[data-remove-id]');
     if (!button) return;
 
     try {
       const postId = button.dataset.removeId;
-      const response = await fetch(`/api.php?action=deletePost&id=${encodeURIComponent(postId)}`, { method: 'DELETE', credentials: 'same-origin' });
-      if (!response.ok) {
-        const result = await response.json().catch(() => ({}));
-        setStatus(result.error || 'Não foi possível remover a matéria.', true);
-        return;
-      }
+      await requestApiJson(`${API_PATH}?action=deletePost&id=${encodeURIComponent(postId)}`, {
+        method: 'DELETE',
+        credentials: 'same-origin',
+      });
 
       await loadContent();
       setStatus('Matéria removida com sucesso.');

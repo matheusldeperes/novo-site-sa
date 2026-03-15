@@ -38,6 +38,7 @@
           </label>
           <button class="button" type="submit">Entrar</button>
         </form>
+        <p id="loginStatus" class="status"></p>
       </section>
 
       <section class="panel" id="editorPanel" hidden>
@@ -51,6 +52,8 @@
         <p id="adminStatus" class="status">Pronto para cadastrar conteúdo.</p>
 
         <form id="postForm" class="blog-admin-form">
+          <input id="editingPostId" type="hidden" />
+
           <label>
             Título da matéria
             <input id="postTitle" type="text" required />
@@ -70,6 +73,7 @@
             Imagens ilustrativas
             <input id="postImages" type="file" multiple accept="image/*" />
             <small>Selecione uma ou mais imagens do seu computador. Serão armazenadas automaticamente no servidor.</small>
+            <small id="existingImagesInfo"></small>
             <div id="imagePreview" class="image-preview"></div>
           </label>
 
@@ -78,7 +82,10 @@
             <textarea id="postContent" rows="10" required placeholder="Escreva o conteúdo aqui..."></textarea>
           </label>
 
-          <button class="button" type="submit">Adicionar matéria</button>
+          <div class="editor-actions">
+            <button id="savePostBtn" class="button" type="submit">Adicionar matéria</button>
+            <button id="cancelEditBtn" class="button ghost" type="button" hidden>Cancelar edição</button>
+          </div>
         </form>
       </section>
 
